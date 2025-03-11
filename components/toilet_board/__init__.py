@@ -8,6 +8,7 @@ from esphome.const import (
     CONF_NAME,
     CONF_DATA_PIN,
     CONF_DISABLED_BY_DEFAULT,
+    CONF_MODE,
 )
 
 DEPENDENCIES = ["wifi"]
@@ -23,6 +24,7 @@ CONFIG_SCHEMA = cv.Schema({
   cv.Optional(CONF_CITY): cv.string_strict,
   cv.Required(CONF_NAME): cv.string_strict,
   cv.Required(CONF_DISABLED_BY_DEFAULT): cv.boolean,
+  cv.Required(CONF_MODE): cv.string_strict,
 }
 ).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
