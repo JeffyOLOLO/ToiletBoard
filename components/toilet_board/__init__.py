@@ -4,6 +4,7 @@ from esphome import pins
 from esphome.components import text
 from esphome.components.text import new_text
 from esphome.const import (
+    CONF_ID,
     CONF_DATA_PIN,
 )
 
@@ -22,7 +23,7 @@ CONFIG_SCHEMA = cv.Schema({
 ).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
 async def to_code(config):
-    var = await new_text(config)
+    var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
 
     data_pin = await cg.gpio_pin_expression(config[CONF_DATA_PIN])
