@@ -11,7 +11,7 @@ namespace Board {
 class ToiletBoard: public PollingComponent, public text::Text
 {
 public:
-    void set_data_pin(GPIOPin *data_pin) { data_pin_ = data_pin; }
+    void set_data_pin(InternalGPIOPin *data_pin) { data_pin_ = data_pin; }
     void set_city(const char* city) { city_ = city; }
     void set_text(text::Text* text) { text_ = text; }
 
@@ -29,7 +29,7 @@ public:
 protected:
     void control(const std::string &value) override {}
 
-    GPIOPin* data_pin_;
+    InternalGPIOPin *data_pin_;
     const char* city_;
     text::Text* text_;
 };
