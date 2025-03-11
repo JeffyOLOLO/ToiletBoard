@@ -14,9 +14,17 @@ public:
     void set_city(const char* city) { city_ = city; }
     void set_text(text::Text* text) { text_ = text; }
 
+    void set_name(const char *) {}
+    void set_object_id(const char *) {}
+    void set_disabled_by_default(bool) {}
+    void set_min_length(int) {}
+    void set_max_length(int) {}
+    void set_mode(const char *) {}
+
     void setup() override {}
     void dump_config() override;
     void loop() override {}
+    void update() override {}
 
 protected:
     GPIOPin* data_pin_;
