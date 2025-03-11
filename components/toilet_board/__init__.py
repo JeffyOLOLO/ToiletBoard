@@ -18,17 +18,12 @@ ToiletBoard = board_ns.class_("ToiletBoard", cg.PollingComponent, text.Text)
 
 CONF_CITY = 'city'
 
-text_ns = cg.esphome_ns.namespace("text")
-TextMode = text_ns.enum("TextMode")
-TEXT_MODES = {
-    "TEXT": TextMode.TEXT_MODE_TEXT,
-    "PASSWORD": TextMode.TEXT_MODE_PASSWORD,  # to be implemented for keys, passwords, etc.
-}
-
 CONFIG_SCHEMA = cv.COMPONENT_SCHEMA.extend(text.TEXT_SCHEMA.extend({
   # cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
+
+  cv.Optional(text.CONF_MODE, default=text.TextMode.TEXT_MODE_TEXT): cv.enum(text.TEXT_MODES, upper=True),
 }
 ).extend(cv.polling_component_schema("1s")))
 
