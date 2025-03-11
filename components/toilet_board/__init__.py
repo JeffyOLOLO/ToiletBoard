@@ -29,11 +29,8 @@ CONFIG_SCHEMA = cv.Schema({
   cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
-  cv.Required(CONF_NAME): cv.string_strict,
-  cv.Required(CONF_DISABLED_BY_DEFAULT): cv.boolean,
-  cv.Required(CONF_MODE): cv.enum(TEXT_MODES, upper=True),
 }
-).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
+).extend(text.TEXT_SCHEMA).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
 async def to_code(config):
     # var = cg.new_Pvariable(config[CONF_ID])
