@@ -1,6 +1,6 @@
 #include "toilet_board.h"
 
-#include "log.h"
+#include "esphome/core/log.h"
 
 namespace esphome {
 namespace Board {
