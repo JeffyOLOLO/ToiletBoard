@@ -7,11 +7,12 @@
 namespace esphome {
 namespace Board {
 
-class ToiletBoard: public PollingComponent, public Text
+class ToiletBoard: public PollingComponent
 {
 public:
     void set_data_pin(GPIOPin *data_pin) { data_pin_ = data_pin; }
     void set_city(const char* city) { city_ = city; }
+    void set_text(text::Text* text) { text_ = text; }
 
     void setup() override {}
     void dump_config() override;
@@ -20,6 +21,7 @@ public:
 protected:
     GPIOPin* data_pin_;
     const char* city_;
+    text::Text* text_;
 };
 
 }
