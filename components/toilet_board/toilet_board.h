@@ -7,7 +7,7 @@
 namespace esphome {
 namespace Board {
 
-class ToiletBoard: public PollingComponent
+class ToiletBoard: public PollingComponent, public text::Text
 {
 public:
     void set_data_pin(GPIOPin *data_pin) { data_pin_ = data_pin; }
