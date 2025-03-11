@@ -22,13 +22,14 @@ CONFIG_SCHEMA = cv.COMPONENT_SCHEMA.extend(text.TEXT_SCHEMA.extend({
   # cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
-
+  # Required by text
+  cv.Optional(CONF_NAME, default="Message"): cv.string_strict,
   cv.Optional(text.CONF_MODE, default="TEXT"): cv.enum(text.TEXT_MODES, upper=True),
 }
 ).extend(cv.polling_component_schema("1s")))
 
 async def to_code(config):
-    print(config[CONF_NAME])
+    # print(config[CONF_NAME])
     # var = cg.new_Pvariable(config[CONF_ID])
     var = await text.new_text(config)
     await cg.register_component(var, config)
