@@ -7,6 +7,7 @@ from esphome.const import (
     # CONF_ID,
     CONF_NAME,
     CONF_DATA_PIN,
+    CONF_DISABLED_BY_DEFAULT,
 )
 
 DEPENDENCIES = ["wifi"]
@@ -20,7 +21,8 @@ CONFIG_SCHEMA = cv.Schema({
   cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
-  cv.Optional(CONF_NAME): cv.string_strict,
+  cv.Required(CONF_NAME): cv.string_strict,
+  cv.Required(CONF_DISABLED_BY_DEFAULT): cv.boolean,
 }
 ).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
