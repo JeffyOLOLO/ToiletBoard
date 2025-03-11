@@ -4,7 +4,7 @@ from esphome import pins
 from esphome.components import text
 from esphome.components.text import new_text
 from esphome.const import (
-    CONF_ID,
+    # CONF_ID,
     CONF_DATA_PIN,
 )
 
@@ -16,18 +16,18 @@ ToiletBoard = board_ns.class_("ToiletBoard", cg.PollingComponent, text.Text)
 CONF_CITY = 'city'
 
 CONFIG_SCHEMA = cv.Schema({
-  cv.GenerateID(): cv.declare_id(ToiletBoard),
+  # cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
 }
 ).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
 async def to_code(config):
-    var = cg.new_Pvariable(config[CONF_ID])
+    # var = cg.new_Pvariable(config[CONF_ID])
+    var = await text.new_text(config)
     await cg.register_component(var, config)
 
-    txt = await text.new_text(config)
-    cg.add(var.set_text(txt))
+    # cg.add(var.set_text(txt))
 
     data_pin = await cg.gpio_pin_expression(config[CONF_DATA_PIN])
     cg.add(var.set_data_pin(data_pin))
