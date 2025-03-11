@@ -16,7 +16,7 @@ ToiletBoard = board_ns.class_("ToiletBoard", cg.PollingComponent, text.Text)
 CONF_CITY = 'city'
 
 CONFIG_SCHEMA = cv.Schema({
-  # cv.GenerateID(): cv.declare_id(ToiletBoard),
+  cv.GenerateID(): cv.declare_id(ToiletBoard),
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
 }
