@@ -30,7 +30,7 @@ CONFIG_SCHEMA = cv.Schema({
   cv.Required(CONF_DATA_PIN): pins.gpio_output_pin_schema,
   cv.Optional(CONF_CITY): cv.string_strict,
 }
-).extend(text.TEXT_SCHEMA).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
+).extend(cv.polling_component_schema("1s")).extend(cv.COMPONENT_SCHEMA)
 
 async def to_code(config):
     # var = cg.new_Pvariable(config[CONF_ID])
