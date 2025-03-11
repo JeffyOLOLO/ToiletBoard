@@ -1,0 +1,5 @@
+toilet_board:
+  id: number # optional
+  data_pin: pin
+  city: Prague # TODO: optional. add a link to cities
+  update_interval: number
