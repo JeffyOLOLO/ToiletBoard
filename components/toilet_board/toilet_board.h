@@ -1,12 +1,13 @@
 #pragma once
 
 #include "esphome/core/component.h"
+#include "esphome/components/text/text.h"
 #include "esphome/core/hal.h"
 
 namespace esphome {
 namespace Board {
 
-class ToiletBoard: public PollingComponent
+class ToiletBoard: public PollingComponent, public Text
 {
 public:
     void set_data_pin(GPIOPin *data_pin) { data_pin_ = data_pin; }
