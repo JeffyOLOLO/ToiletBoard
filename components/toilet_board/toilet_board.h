@@ -27,6 +27,8 @@ public:
     text::TextTraits traits;
 
 protected:
+    void control(const std::string &value) override {}
+
     GPIOPin* data_pin_;
     const char* city_;
     text::Text* text_;
