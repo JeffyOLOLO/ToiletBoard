@@ -22,15 +22,14 @@ public:
 protected:
     void control(const std::string &value) override
     {
-        auto str = value.c_str();
-        char out[255];
-        while (*str)
+        std::string out;
+        for (auto i = 0; i < value.length(); ++i)
         {
-            sprintf(out, "%02X ", (unsigned char)*str); // Print each character as hex
-            str++;
+            char hex[3];
+            sprintf(hex, "%02X", (unsigned char)value[i]);
+            out += hex;
         }
-        sprintf(out, "\0");
-        ESP_LOGD("tb", "in hex: %s.", out[0]);
+        ESP_LOGD("tb", "in hex: %s.", out.c_str());
     }
 
     InternalGPIOPin *data_pin_;
