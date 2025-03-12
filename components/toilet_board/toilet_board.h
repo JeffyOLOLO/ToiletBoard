@@ -23,7 +23,7 @@ protected:
     void control(const std::string &value) override
     {
         auto str = value.c_str();
-        char *out;
+        char out[255];
         while (*str)
         {
             sprintf(out, "%02X ", (unsigned char)*str); // Print each character as hex
