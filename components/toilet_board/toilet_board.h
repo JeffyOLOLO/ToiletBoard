@@ -3,6 +3,7 @@
 #include "esphome/core/component.h"
 #include "esphome/components/text/text.h"
 #include "esphome/core/hal.h"
+#include "esphome/core/log.h"
 
 namespace esphome {
 namespace Board {
@@ -19,7 +20,18 @@ public:
     void update() override {}
 
 protected:
-    void control(const std::string &value) override {}
+    void control(const std::string &value) override
+    {
+        const auto str = value.c_str();
+        char *out;
+        while (*str)
+        {
+            sprintf(out, "%02X ", (unsigned char)*str); // Print each character as hex
+            str++;
+        }
+        sprintf(out, "\n");
+        ESP_LOGD("tb", "in hex: %s", out);
+    }
 
     InternalGPIOPin *data_pin_;
     const char *city_;
