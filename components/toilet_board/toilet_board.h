@@ -22,7 +22,7 @@ public:
 protected:
     void control(const std::string &value) override
     {
-        const auto str = value.c_str();
+        auto str = value.c_str();
         char *out;
         while (*str)
         {
