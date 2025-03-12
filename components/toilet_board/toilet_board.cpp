@@ -1,7 +1,7 @@
 #include "toilet_board.h"
 
 #include "esphome/core/log.h"
-#include <NeoPixelBus.h>
+#include "NeoPixelBus.h"
 
 namespace esphome {
 namespace Board {
