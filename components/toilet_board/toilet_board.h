@@ -29,8 +29,8 @@ protected:
             sprintf(out, "%02X ", (unsigned char)*str); // Print each character as hex
             str++;
         }
-        sprintf(out, "\n");
-        ESP_LOGD("tb", "in hex: %s", out);
+        sprintf(out, "\0");
+        ESP_LOGD("tb", "in hex: %s.", out[0]);
     }
 
     InternalGPIOPin *data_pin_;
