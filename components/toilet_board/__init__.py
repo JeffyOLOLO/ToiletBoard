@@ -32,5 +32,5 @@ async def to_code(config):
     cg.add(var.set_data_pin(data_pin))
     if CONF_CITY in config:
         cg.add(var.set_city(config[CONF_CITY]))
-    
+
     cg.add_library("makuna/NeoPixelBus", "2.8.3")

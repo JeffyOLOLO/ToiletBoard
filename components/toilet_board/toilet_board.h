@@ -14,7 +14,7 @@ public:
     void set_data_pin(InternalGPIOPin *data_pin) { data_pin_ = data_pin; }
     void set_city(const char *city) { city_ = city; }
 
-    void setup() override {}
+    void setup() override;
     void dump_config() override;
     void loop() override {}
     void update() override {}

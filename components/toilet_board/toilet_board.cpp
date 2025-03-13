@@ -20,7 +20,7 @@ const uint8_t TileWidth = 4; // laid out in 4 panels x 1 panel mosaic
 const uint8_t TileHeight = 1;
 
 const uint16_t PixelCount = PanelWidth * PanelHeight * TileWidth * TileHeight;
-const uint8_t PixelPin = 15;
+const uint8_t PixelPin = 23;
 
 NeoMosaic<MyPanelLayout> mosaic(
     PanelWidth,
@@ -37,5 +37,10 @@ void ToiletBoard::dump_config()
     ESP_LOGCONFIG(TAG, "  city: %s", this->city_ ? this->city_ : "");
 }
 
+void ToiletBoard::setup()
+{
+    strip.Begin();
+    strip.Show();
+}
 }
 }
